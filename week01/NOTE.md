@@ -8,11 +8,11 @@
 
 ### 一、明白学习什么，前端的边界是什么
 
-![](E:\doc\学习资料\微信公众号\pic\TIM截图20200415145225.png)
+![20200415145225](E:\doc\学习资料\微信公众号\pic\sfgjbEvGNqLuR8V.png)
 
 编程能力：（技术）难的问题；架构能力：大的问题；工程能力：人的问题
 
-前端知识：
+前端知识：知识体系
 
 领域知识：业务相关，在实践中学习
 
@@ -68,7 +68,7 @@ Brendan Eich
 
 3、mvc的案例（哪个正确不重要，重要的是自己的理解）
 
-![TIM截图20200415153517](E:\doc\学习资料\微信公众号\pic\TIM截图20200415153517-1586936180668.png)
+![02](E:\doc\学习资料\微信公众号\pic\wFLkd16pQ539sUv-1586960215196.png)
 
 ### 三、追溯法作业：面向对象
 
@@ -110,8 +110,8 @@ Brendan Eich
 
 entity实例补全
 
+```xml
 xhtml-lat1.ent
-
 <!ENTITY nbsp   "&#160;"> <!-- no-break space = non-breaking space,
                                   U+00A0 ISOnum -->
 <!ENTITY iexcl  "&#161;"> <!-- inverted exclamation mark, U+00A1 ISOnum -->
@@ -575,14 +575,25 @@ xhtml-special.ent
 
 <!-- Currency Symbols -->
 <!ENTITY euro   "&#8364;"> <!--  euro sign, U+20AC NEW -->
+```
 
-备注：<!ENTITY euro   "&#8364;">以这个为例，euro是entity name，用的时候就是在euro左边加上&，右边加上分号‘；’，是语义描述法，后面那个值是十进制编号描述法。
+
+
+
+
+备注：以这个euro  为例，euro是entity name，用的时候就是在euro左边加上&，右边加上分号‘；’，是语义描述法，后面那个值是十进制编号描述法。
 
 如何获取所有tag：Array.prototype.map.call($0.querySelectorAll('code'),e=>e.innerText).join("\n")
 
 零宽空格的魔法我怎么实现不了，是不是浏览器不一样？
 
 runjobs()介绍了运行时
+
+
+
+前端知识架构图
+
+![前端知识架构图](E:\doc\学习资料\微信公众号\pic\3Jt2MaITLYkq9Op.png)
 
 ## 前端与工程体系
 
