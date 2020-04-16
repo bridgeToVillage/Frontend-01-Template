@@ -8,7 +8,7 @@
 
 ### 一、明白学习什么，前端的边界是什么
 
-![20200415145225](E:\doc\学习资料\微信公众号\pic\sfgjbEvGNqLuR8V.png)
+![20200415145225](https://github.com/bridgeToVillage/Frontend-01-Template/blob/master/week01/img/20200415145225.png)
 
 编程能力：（技术）难的问题；架构能力：大的问题；工程能力：人的问题
 
@@ -68,7 +68,7 @@ Brendan Eich
 
 3、mvc的案例（哪个正确不重要，重要的是自己的理解）
 
-![02](E:\doc\学习资料\微信公众号\pic\wFLkd16pQ539sUv-1586960215196.png)
+![02](https://github.com/bridgeToVillage/Frontend-01-Template/blob/master/week01/img/20200415153517.png)
 
 ### 三、追溯法作业：面向对象
 
@@ -593,7 +593,7 @@ runjobs()介绍了运行时
 
 前端知识架构图
 
-![前端知识架构图](E:\doc\学习资料\微信公众号\pic\3Jt2MaITLYkq9Op.png)
+![03](https://github.com/bridgeToVillage/Frontend-01-Template/blob/master/week01/img/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB.png)
 
 ## 前端与工程体系
 
