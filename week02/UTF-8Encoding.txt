@@ -1,0 +1,6 @@
+function UTF8Encoding(str) {
+  return str
+    .split('')
+    .map((s) => `\\u${s.charCodeAt().toString(8)}`)
+    .join('')
+}
