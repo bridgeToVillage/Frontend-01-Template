@@ -337,7 +337,7 @@ function convertStringToNumber(string,x){
     if(arguments.length < 2) x=10;
     var chars = string.split('');
     var number = 0;
-    
+    if(chars[0]!== '-'){
     var i= 0;
     while(i<chars.length && chars[i] != '.'){
         number= number * x;
@@ -352,9 +352,11 @@ function convertStringToNumber(string,x){
         number += (chars[i].codePointAt(0)- '0'.codePointAt(0))*fraction;
         i++;
     }
+    }else{
+        number = -convertStringToNumber(string.split('-')[1],x);
+    }
     return number;
 }
-
 function convertNumberToString(number,x){
     var integer = Math.floor(number);
     var fraction = number - integer;
@@ -369,13 +371,6 @@ function convertNumberToString(number,x){
        string = "-" + convertNumberToString(negative,x);
     }
     return string;
-}
-
-function ss (integer){
-    var negative = integer;
-        negative = Math.abs(negative);
-    console.log(integer)
-    return negative;
 }
 ```
 
