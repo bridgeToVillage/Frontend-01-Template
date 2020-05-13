@@ -110,11 +110,9 @@ while(queue.length){
 ### 函数调用
 
 #### Execution Context Stack  栈
-
-![](E:\doc\学习资料\微信公众号\pic\d246f11a-0081-433d-851c-6d7498a7a581-1589383290469.png)
+![](https://imgkr.cn-bj.ufileos.com/d246f11a-0081-433d-851c-6d7498a7a581.png)
 
 ##### Generator
-
 ```js
 function *foo(){
 	yield 1;
@@ -126,14 +124,12 @@ g.next();
 ```
 
 ##### LexicalEnvironment-词法环境
-
 * this
 * new.target
 * super
 * 变量
 
 ##### VariableEnvironment-变量环境
-
 VariableEnvironment是个历史包袱，仅用于处理var声明
 
 ```js
@@ -149,11 +145,9 @@ console.log(x);
 ```
 
 ##### Environment Record
-
-![](E:\doc\学习资料\微信公众号\pic\b0670145-cf10-44e6-8bb9-cfe618f37d90-1589383290449.png)
+![](https://imgkr.cn-bj.ufileos.com/b0670145-cf10-44e6-8bb9-cfe618f37d90.png)
 
 ##### Function - Closure
-
 ```js
 var y = 2;
 function foo2(){
@@ -162,7 +156,7 @@ function foo2(){
 export foo2;
 ```
 
-![](E:\doc\学习资料\微信公众号\pic\11bce807-fdd1-4dcc-b3c8-e7f833853eaf-1589383290454.png)
+![](https://imgkr.cn-bj.ufileos.com/11bce807-fdd1-4dcc-b3c8-e7f833853eaf.png)
 
 ```js
 var y = 2;
@@ -177,7 +171,7 @@ export foo3;
 ```
 
 
-![](E:\doc\学习资料\微信公众号\pic\cb8731ae-0503-4f40-8d98-7ffd47b2a67b-1589383290788.png)
+![](https://imgkr.cn-bj.ufileos.com/cb8731ae-0503-4f40-8d98-7ffd47b2a67b.png)
 
 
 ### Realm有什么用
@@ -189,7 +183,6 @@ iframe.contentWindow.eval("this.o={}")
 iframe.contentWindow.o
 iframe.contentWindow.o instanceof Object
 ```
-
 在js中，函数表达式和对象直接量均会创建对象。
 使用.做隐匿转换也会创建对象。
 这些对象也是有原型的，如果没有Realm,就不知道它们的原型是什么。
@@ -198,12 +191,12 @@ iframe.contentWindow.o instanceof Object
 
 #### 在浏览器输入url发生了什么
 
-![](E:\doc\学习资料\微信公众号\pic\662b88be-98aa-44e1-8ba0-c0f2d6eb04f3.png)
+![](https://imgkr.cn-bj.ufileos.com/662b88be-98aa-44e1-8ba0-c0f2d6eb04f3.png)
 
 
-![](E:\doc\学习资料\微信公众号\pic\0ab05b18-6421-4b08-af02-a6a17069e99e.png)
+![](https://imgkr.cn-bj.ufileos.com/0ab05b18-6421-4b08-af02-a6a17069e99e.png)
 
-![](E:\doc\学习资料\微信公众号\pic\d439d548-57e6-4b25-b513-e40eb3d8b913.png)
+![](https://imgkr.cn-bj.ufileos.com/d439d548-57e6-4b25-b513-e40eb3d8b913.png)
 
 ## 浏览器工作原理（二）
 
@@ -272,7 +265,7 @@ xhr.HEADERS_RECEIVED
 
 https://tools.ietf.org/html/rfc2616
 
-#### 实现一个简易浏览器请求头
+#### 实现一个简易浏览器
 
 client2
 
