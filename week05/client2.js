@@ -11,7 +11,7 @@ class Request {
         this.path = options.path || "/";
         this.body = options.body || {};
         this.headers = options.headers || {};
-        if(this.headers["Content-Type"]){
+        if(!this.headers["Content-Type"]){
             this.headers["Content-Type"] = "application/x-www-form-urlencoded"
         }
 
@@ -30,8 +30,15 @@ ${Object.keys(this.headers).map(key => `${key}: ${this.headers[key]}`).join('\r\
 ${this.bodyText}`
     }
 
-    send() {
-
+    send(connection) {
+        if(connection)
+          connection.write(this.toString());
+        else connection = net.createConnection({
+            host: this.host,
+            port: this.port
+        },() => {
+            connection.write(this.toString());
+        })
     }
 
 }
@@ -45,17 +52,21 @@ const client = net.createConnection({
     host: "127.0.0.1",
     port: 8088 }, () => {
         console.log('connected to server!');
-        let reuest = new Request({
+        let request = new Request({
             method: "POST",
             host: "127.0.0.1",
             port: "8088",
             path: "/",
+            headers: {
+                ["X-Foo"]:"customed"
+            },
             body: {
                 name:"winter"
             }
         })
         
         console.log(request.toString());
+        client.write(request.toString());
         /*client.write(`
 POST / HTTP/1.1\r
 Content-Type: application/x-www-form-urlencoded\r
