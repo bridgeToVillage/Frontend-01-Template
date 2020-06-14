@@ -30,7 +30,7 @@ ${this.bodyText}`
 
     send(connection) {
         return new Promise((resolve,reject) => {
-            const parser = new ResponseParser();
+            const parser = new ResponseParser;
             if(connection){
                connection.write(this.toString());
             }
@@ -97,7 +97,7 @@ class ResponseParser {
     }
     receive(string){
         for(let i = 0; i< string.length; i++){
-            if(!this.isFinished)
+            // if(!this.isFinished)
                 this.receiveChar(string.charAt(i))
         }
     }
@@ -208,7 +208,7 @@ void async function () {
         port: "8088",
         path: "/",
         headers: {
-            ["X-Foo2"]:"customized"
+            ["X-Foo2"]:"customed"
         },
         body: {
             name:"winter"
@@ -216,6 +216,7 @@ void async function () {
     })
     let response = await request.send();
     let dom = parser.parseHTML(response.body);
+    console.log(dom)
 }();
 
 

@@ -30,7 +30,7 @@ ${this.bodyText}`
 
     send(connection) {
         return new Promise((resolve,reject) => {
-            const parser = new ResponseParser();
+            const parser = new ResponseParser;
             if(connection){
                connection.write(this.toString());
             }
@@ -97,7 +97,7 @@ class ResponseParser {
     }
     receive(string){
         for(let i = 0; i< string.length; i++){
-            if(!this.isFinished)
+            // if(!this.isFinished)
                 this.receiveChar(string.charAt(i))
         }
     }
