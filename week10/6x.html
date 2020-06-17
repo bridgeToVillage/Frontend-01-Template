@@ -20,9 +20,9 @@
 </div>
 <script>
     let pattern = [
-        [1, 2, 0],
-        [0, 1, 0],
-        [1, 0, 2]
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
     ]
     let color = 1;
     function show() {
@@ -31,7 +31,7 @@
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
                 let cell = document.createElement("div")
-                cell.innerHTML =
+                cell.innerText =
                     pattern[i][j] == 2 ? "❌" :
                         pattern[i][j] == 1 ? "⭕" :
                             ""
@@ -49,15 +49,17 @@
         if (check(pattern, color)) alert(color === 2 ? "❌ is winner" : "⭕ is winner")
         color = 3 - color
         show()
-        if (willWin(pattern, color)) {
-            console.log(color == 2 ? "x will win" : "o will win")
-        }
+        computerMove()
+        // if (willWin(pattern, color)) {
+        //     console.log(color == 2 ? "x will win" : "o will win")
+        // }
     }
 
     function computerMove() {
         let choice = bestChoice(pattern, color)
         if (choice.point)
             pattern[choice.point[1]][choice.point[0]] = color;
+        if (check(pattern, color)) alert(color === 2 ? "❌ is winner" : "⭕ is winner")
         color = 3 - color;
         show();
     }
@@ -112,23 +114,22 @@
         }
     }
     function clone(pattern) {
-        return Object.create(pattern)
+        return JSON.parse(JSON.stringify(pattern))//Object.create(pattern)
     }
 
     function willWin(pattern) {
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
-                if (pattern[i][j] !== 0) {
+                if (pattern[i][j] !== 0)
                     continue;
-                    let tmp = clone(pattern)
-                    tmp[i][j] = color;
-                    if (check(tmp, color)) {
-                        return [j, i];
-                    }
+                let tmp = clone(pattern)
+                tmp[i][j] = color;
+                if (check(tmp, color)) {
+                    return [j, i];
                 }
             }
-            return null;
         }
+        return null;
     }
 
     // function willLose(pattern,color){
@@ -143,6 +144,14 @@
     // }
 
     let openings = new Map()
+    // openings.set([
+    //     [[0, 0, 0],
+    //     [0, 0, 0],
+    //     [0, 0, 0]].toString(), {
+    //         point: [1, 1],
+    //         result: 0
+    //     }
+    // ])
     openings.set([
         [[0, 0, 0],
         [0, 0, 0],
@@ -151,11 +160,14 @@
             result: 0
         }
     ])
-
     function bestChoice(pattern, color) {
-        if (openings.has(pattern.toString()+ color)) {
-            return openings.get(pattern.toString() + color)
-        }
+        // if (openings.has(pattern.toString())) {
+        //     return openings.get(pattern.toString())
+        // }
+        // 对比上面的和set的注释部分，新写法怎么就提速了?
+        // if (openings.has(pattern.toString() + color)) {
+        //     return openings.get(pattern.toString() + color)
+        // }
         let point = willWin(pattern, color);
         if (point) {
             return {
@@ -164,6 +176,7 @@
             }
         }
         let result = -1;
+        // 循环找到对方最差的选择，就是自己的最佳选择
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
                 if (pattern[i][j] !== 0)
@@ -171,9 +184,12 @@
                 let tmp = clone(pattern);
                 tmp[i][j] = color;
                 let opp = bestChoice(tmp, 3 - color)
-                if (-opp.result > result)
+                if (-opp.result >= result) {
                     point = [j, i];
-                result = -opp.result
+                    result = -opp.result
+                }
+                // if (result === 1)
+                //     break outer;  // 输赢剪枝
             }
         }
 

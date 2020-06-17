@@ -50,7 +50,7 @@
         color = 3 - color
         show()
         if (willWin(pattern, color)) {
-            console.log(color == 2 ? "x will win" : "o will win")
+            console.log(color === 2 ? "❌ will win!" : "⭕ will win!")
         }
     }
 
@@ -110,6 +110,7 @@
             if (win)
                 return true;
         }
+        return false
     }
     function clone(pattern) {
         return JSON.parse(JSON.stringify(pattern))
@@ -118,17 +119,17 @@
     function willWin(pattern) {
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
-                if (pattern[i][j] !== 0) {
+                if (pattern[i][j] !== 0) // 判断未填写部分
                     continue;
-                    let tmp = clone(pattern)
-                    tmp[i][j] = color;
-                    if (check(tmp, color)) {
-                        return [j, i];
-                    }
+                let tmp = clone(pattern)
+                tmp[i][j] = color;
+                if (check(tmp, color)) {
+                    return [j, i];
                 }
+
             }
-            return null;
         }
+        return null;
     }
 
     // function willLose(pattern,color){
@@ -153,7 +154,7 @@
     ])
 
     function bestChoice(pattern, color) {
-        if (openings.has(pattern.toString()+ color)) {
+        if (openings.has(pattern.toString() + color)) {
             return openings.get(pattern.toString() + color)
         }
         let point = willWin(pattern, color);
