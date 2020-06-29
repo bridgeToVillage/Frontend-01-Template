@@ -56,36 +56,47 @@
     function sleep(t){
         return new Promise(function(resolve){
             setTimeout(resolve, t);
-        })
-    }
-
+        });
+    }    
     async function findPath(map, start, end) {
-        map = map.slice(); // 形成一个新map
+        let _map = map.slice(); // 形成一个新map
         let queue = [start]
         
-        async function insert([x, y]) {
-            if(map[100*y + x] !== 0)
+        async function insert(x, y, pre) {
+            if(_map[100*y + x] !== 0)
                 return;
             if(x<0 || y< 0 || x>= 100 || y>= 100)
                 return;
-            map[100*y+ x] = 2; //标记为走过了，即蓝色
-            await sleep(5000);
-            
+             //标记为走过了，即蓝色
             container.children[y * 100 + x].style.backgroundColor = "lightgreen"
+            _map[100*y+ x] = pre;
+            await sleep(2);
             queue.push([x, y]);
-            
         }
 
         while(queue.length) {
             let [x,y] = queue.shift()
             console.log(x,y);
-            if(x === end[0] && y === end[1])
-                return true;
-            await insert([x-1, y]);
-            await insert([x+1, y]);
-            await insert([x, y-1]);
-            await insert([x, y+1]);
+            if(x === end[0] && y === end[1]){
+                let path = [];
+                while(x !== start[0] || y!== start[1]){
+                    path.push(map[y* 100 + x]);
+                    [x,y] = _map[y * 100 + x];
+                    container.children[y * 100 + x].style.backgroundColor = "pink"
+                }
+                return path;
+            }
+            await insert(x-1, y, [x,y]);//左
+            await insert(x+1, y, [x,y]);//右
+            await insert(x, y-1, [x,y]);//下
+            await insert(x, y+1, [x,y]);//上
+
+            //让它可以走斜线
+            await insert(x-1,y-1,[x,y]);
+            await insert(x+1,y-1,[x,y]);
+            await insert(x-1,y+1,[x,y]);
+            await insert(x+1,y+1,[x,y]);
         }
-        return false;
+        return null;
     }
 </script>
