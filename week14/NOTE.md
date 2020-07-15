@@ -1,7 +1,9 @@
 # webpack
+
 ### 基于jsx的组件化设计
 ## 一、安装webpack相关依赖、插件
-   ### 1、依次安装这些依赖和插件：@babel/core、@babel/plugin-transform-react-jsx、@babel/preset-env、babel-loader、webpack、webpack-cli、webpack-dev-server，其中webpack的三个依赖都要全局安装；
+依次安装这些依赖和插件：@babel/core、@babel/plugin-transform-react-jsx、@babel/preset-env、babel-loader、webpack、webpack-cli、webpack-dev-server，其中webpack的三个依赖都要全局安装；
+
 ## 二、配置js中的jsx语法解析配置
 ```js
 {
@@ -43,7 +45,7 @@ module.exports = {
 
 在开发模式下（mode: "development",），optimization配置了minimize: false，这样可以方便调试，是个很有用的技巧
 
-## 新建index.html和main.js文件
+## 三、新建index.html和main.js文件
 ```js
 // index.html
 <script src="./main.js"></script>
@@ -80,7 +82,10 @@ let component = <Div id="a" class="b"/>
 
 console.log(component);
 ```
-不要怀疑，代码是可以执行的。调试看下结果，我说下流程，代码走到let component = <Div id="a" class="b"/>这里没有报错就是因为执行了create函数，create函数就是jsx的编译函数；我们看到输出结果是：
+不要怀疑，代码是可以执行的。
+
+调试看下结果，我说下流程。代码走到let component = <Div id="a" class="b"/>这里没有报错就是因为执行了create函数，create函数就是jsx的编译函数；我们看到输出结果是：
+
 ```js
 
 ```
@@ -130,7 +135,6 @@ function create(Cls,attributes,...children) {
     for(let child of children) {
         o.appendChild(child);
     }
-
     return o;
 }
 
@@ -163,10 +167,14 @@ let component = <Parent id="a" class="b">
 
 console.log(component);
 ```
+这里确实没明白...children是啥意思
+
+
+
 组件设计的核心：
 attribute、property、children
 
 
 ## 疑问
-* 1、webpack与webpack-cli要全局安装才能使用webpack,但是课程上是本地安装，为什么我这里只能全局，非全局就报错
+* 1、webpack与webpack-cli要全局安装才能使用webpack
 * 2、jsx如果传入是小写，会认为是字符串；如果是大写开头，会认为是class或者Function
