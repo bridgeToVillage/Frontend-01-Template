@@ -128,3 +128,7 @@ export class TimeLine {
     }
 }
 ```
+
+
+## timingFunction
+以time为入参，以progression为出参的函数值
