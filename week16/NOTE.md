@@ -34,3 +34,10 @@ start ---移动10px---> pan start ---move--> pan ---end--> pan end  //放上去�
 ### 4、上节课作业是要把gesture加到carousel里，但是我carousel没neng完
 ### 5、这节课是完善上一步内容
 ### 6、所以作业怎么交呢？上节课跟完就嗝屁了啊
+
+、、、
+### 最后习得一个大招---抄！
+```
+https://github.com/zhuanyongxigua/Frontend-01-Template/tree/master/week16/carouselAnimationGesture3
+```
+
